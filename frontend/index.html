@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Z.AI — BNPL Advisory for SMEs</title>
+    <meta name="description" content="AI-powered Buy Now Pay Later advisory system for Malaysian SMEs. Powered by Z.AI GLM decision intelligence." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <!-- ═══════════════ SIDEBAR ═══════════════ -->
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <div class="brand-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" stroke="url(#g1)" stroke-width="2" fill="none"/>
+              <path d="M14 8L20 11V17L14 20L8 17V11L14 8Z" fill="url(#g1)"/>
+              <defs><linearGradient id="g1" x1="2" y1="2" x2="26" y2="26"><stop stop-color="#60A5FA"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs>
+            </svg>
+          </div>
+          <div>
+            <h1 class="brand-name">Z.AI</h1>
+            <p class="brand-sub">BNPL Advisory</p>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-btn active" data-view="overview" id="nav-overview">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            Dashboard
+          </button>
+          <button class="nav-btn" data-view="evaluator" id="nav-evaluator">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547Z"/></svg>
+            BNPL Evaluator
+          </button>
+          <button class="nav-btn" data-view="upload" id="nav-upload">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Upload Data
+          </button>
+          <button class="nav-btn" data-view="transactions" id="nav-transactions">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Transactions
+          </button>
+          <button class="nav-btn" data-view="forecast" id="nav-forecast">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Forecast
+          </button>
+          <button class="nav-btn" data-view="benchmarks" id="nav-benchmarks">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+            Benchmarks
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="status-dot"></div>
+          <span>System Online</span>
+        </div>
+      </aside>
+
+      <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+      <main class="content">
+        <!-- Top Bar -->
+        <header class="topbar">
+          <div class="topbar-left">
+            <h2 class="page-title" id="page-title">Dashboard</h2>
+          </div>
+          <div class="topbar-right">
+            <div class="company-badge" id="company-badge">
+              <div class="badge-dot"></div>
+              <span id="company-chip">Loading...</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- ═══ VIEW: OVERVIEW / DASHBOARD ═══ -->
+        <section id="overview" class="view active">
+          <div class="section-header">
+            <div>
+              <p class="section-sub">Real-time performance metrics powered by Z.AI</p>
+            </div>
+          </div>
+
+          <!-- Health Card -->
+          <div class="glass-card health-card">
+            <div class="health-card-inner">
+              <div class="health-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <div>
+                <h3>AI Health Summary</h3>
+                <p id="health-summary">Analyzing financial data...</p>
+              </div>
+            </div>
+            <div class="health-score-badge" id="health-score-badge">--</div>
+          </div>
+
+          <!-- KPI Grid -->
+          <div class="kpi-grid">
+            <div class="glass-card kpi-card" id="kpi-card-revenue">
+              <div class="kpi-label">Total Revenue</div>
+              <div class="kpi-value" id="kpi-revenue">—</div>
+              <div class="kpi-trend up">↑ Tracking</div>
+            </div>
+            <div class="glass-card kpi-card" id="kpi-card-cash">
+              <div class="kpi-label">Operating Cash Flow</div>
+              <div class="kpi-value" id="kpi-cash">—</div>
+              <div class="kpi-trend neutral">— Monthly</div>
+            </div>
+            <div class="glass-card kpi-card" id="kpi-card-margin">
+              <div class="kpi-label">Net Profit Margin</div>
+              <div class="kpi-value" id="kpi-margin">—</div>
+              <div class="kpi-trend up">↑ Healthy</div>
+            </div>
+            <div class="glass-card kpi-card accent" id="kpi-card-eapr">
+              <div class="kpi-label">EAPR Alert</div>
+              <div class="kpi-value" id="kpi-eapr">—</div>
+              <div class="kpi-trend warn">⚠ Monitor</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══ VIEW: BNPL EVALUATOR (Core AI Feature) ═══ -->
+        <section id="evaluator" class="view">
+          <div class="section-header">
+            <div>
+              <p class="section-sub">AI-powered purchase financing decision intelligence</p>
+            </div>
+          </div>
+
+          <div class="evaluator-layout">
+            <!-- Input Form -->
+            <div class="glass-card evaluator-form-card">
+              <h3 class="form-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                Purchase Details
+              </h3>
+              <form id="evaluator-form">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="eval-company">Company Name</label>
+                    <input type="text" id="eval-company" name="company_name" value="SME Advisor Demo" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="eval-industry">Industry</label>
+                    <select id="eval-industry" name="industry">
+                      <option value="Retail">Retail</option>
+                      <option value="F&B">Food & Beverage</option>
+                      <option value="Technology">Technology</option>
+                      <option value="Manufacturing">Manufacturing</option>
+                      <option value="Services">Services</option>
+                      <option value="E-commerce">E-commerce</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="eval-revenue">Monthly Revenue (RM)</label>
+                    <input type="number" id="eval-revenue" name="monthly_revenue_rm" value="85000" min="0" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="eval-expenses">Monthly Expenses (RM)</label>
+                    <input type="number" id="eval-expenses" name="monthly_expenses_rm" value="62000" min="0" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="eval-cash">Cash On Hand (RM)</label>
+                    <input type="number" id="eval-cash" name="cash_on_hand_rm" value="120000" min="0" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="eval-debt">Current Debt (RM)</label>
+                    <input type="number" id="eval-debt" name="current_debt_rm" value="25000" min="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="eval-credit">Credit Score</label>
+                    <input type="number" id="eval-credit" name="credit_score" value="720" min="300" max="900" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="eval-amount">Purchase Amount (RM)</label>
+                    <input type="number" id="eval-amount" name="purchase_amount_rm" value="50000" min="1" required />
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="eval-purpose">Purchase Purpose</label>
+                    <input type="text" id="eval-purpose" name="purchase_purpose" value="New POS system and inventory management equipment" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="eval-uplift">Expected Revenue Uplift (%)</label>
+                    <input type="number" id="eval-uplift" name="expected_revenue_uplift_percent" value="12" min="0" step="0.1" />
+                  </div>
+                </div>
+                <button type="submit" class="btn-primary btn-evaluate" id="btn-evaluate">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547Z"/></svg>
+                  Evaluate with Z.AI
+                </button>
+              </form>
+            </div>
+
+            <!-- Result Panel -->
+            <div class="evaluator-result" id="evaluator-result">
+              <div class="result-placeholder" id="result-placeholder">
+                <div class="placeholder-icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547Z"/></svg>
+                </div>
+                <h3>Z.AI Decision Intelligence</h3>
+                <p>Submit purchase details to receive an AI-powered BNPL vs Traditional financing recommendation with confidence scoring and impact analysis.</p>
+              </div>
+
+              <div class="result-content hidden" id="result-content">
+                <div class="result-decision glass-card" id="result-decision-card">
+                  <div class="decision-header">
+                    <div class="decision-icon" id="decision-icon">✓</div>
+                    <div>
+                      <div class="decision-label">Z.AI Recommendation</div>
+                      <div class="decision-value" id="decision-value">—</div>
+                    </div>
+                  </div>
+                  <div class="confidence-bar-container">
+                    <div class="confidence-label">Confidence Score</div>
+                    <div class="confidence-bar">
+                      <div class="confidence-fill" id="confidence-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="confidence-value" id="confidence-value">0%</div>
+                  </div>
+                </div>
+
+                <div class="glass-card result-explanation">
+                  <h4>Analysis & Rationale</h4>
+                  <p id="result-explanation">—</p>
+                </div>
+
+                <div class="result-metrics">
+                  <div class="glass-card metric-card">
+                    <div class="metric-label">Cash Flow Preserved</div>
+                    <div class="metric-value" id="metric-cash-preserved">—</div>
+                  </div>
+                  <div class="glass-card metric-card">
+                    <div class="metric-label">Projected ROI Increase</div>
+                    <div class="metric-value" id="metric-roi">—</div>
+                  </div>
+                </div>
+
+                <div class="glass-card result-actions" id="result-actions">
+                  <h4>Action Recommendations</h4>
+                  <ul id="action-list"></ul>
+                </div>
+              </div>
+
+              <!-- Loading Overlay -->
+              <div class="result-loading hidden" id="result-loading">
+                <div class="loader-ring"></div>
+                <p>Z.AI is analyzing your purchase...</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══ VIEW: FILE UPLOAD ═══ -->
+        <section id="upload" class="view">
+          <div class="section-header">
+            <div>
+              <p class="section-sub">Upload CSV, JSON, or PDF financial documents for analysis</p>
+            </div>
+          </div>
+
+          <div class="upload-layout">
+            <div class="glass-card upload-zone" id="upload-zone">
+              <div class="upload-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <h3>Drop files here or click to browse</h3>
+              <p>Supports <strong>CSV</strong>, <strong>JSON</strong> (transactions) and <strong>PDF</strong> (invoices)</p>
+              <p class="upload-hint">Max file size: 10MB</p>
+              <input type="file" id="file-input" multiple accept=".csv,.json,.pdf" hidden />
+              <button class="btn-secondary" id="btn-browse">Browse Files</button>
+            </div>
+
+            <div class="glass-card upload-result hidden" id="upload-result">
+              <h3>Upload Results</h3>
+              <div id="upload-summary"></div>
+              <div class="upload-metrics" id="upload-metrics"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══ VIEW: TRANSACTIONS ═══ -->
+        <section id="transactions" class="view">
+          <div class="section-header">
+            <div>
+              <p class="section-sub">Track operational expenses and BNPL payment schedules</p>
+            </div>
+          </div>
+
+          <div class="kpi-grid kpi-3">
+            <div class="glass-card kpi-card">
+              <div class="kpi-label">Total Spend (MTD)</div>
+              <div class="kpi-value" id="tx-total-spend">—</div>
+            </div>
+            <div class="glass-card kpi-card">
+              <div class="kpi-label">Upcoming Repayments</div>
+              <div class="kpi-value" id="tx-upcoming">—</div>
+            </div>
+            <div class="glass-card kpi-card">
+              <div class="kpi-label">Available Credit</div>
+              <div class="kpi-value" id="tx-credit">—</div>
+            </div>
+          </div>
+
+          <div class="glass-card table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Type</th>
+                  <th>Amount (RM)</th>
+                </tr>
+              </thead>
+              <tbody id="tx-rows"></tbody>
+            </table>
+            <div class="table-empty hidden" id="tx-empty">No transactions found. Upload financial data to get started.</div>
+          </div>
+        </section>
+
+        <!-- ═══ VIEW: FORECAST ═══ -->
+        <section id="forecast" class="view">
+          <div class="section-header">
+            <div>
+              <p class="section-sub">Model BNPL repayment impacts on projected cash flows</p>
+            </div>
+          </div>
+
+          <div class="forecast-layout">
+            <div class="glass-card forecast-form-card">
+              <h3 class="form-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                Scenario Parameters
+              </h3>
+              <form id="forecast-form">
+                <div class="form-group"><label>Monthly Revenue (RM)</label><input name="monthly_revenue" type="number" value="85000" required /></div>
+                <div class="form-group"><label>Fixed Expenses (RM)</label><input name="fixed_expenses" type="number" value="62000" required /></div>
+                <div class="form-group"><label>Growth Rate (%)</label><input name="expected_growth_rate" type="number" step="0.1" value="4.5" required /></div>
+                <div class="form-group"><label>Loan Amount (RM)</label><input name="loan_amount" type="number" value="50000" required /></div>
+                <div class="form-group"><label>Term (months)</label><input name="repayment_term_months" type="number" value="12" required /></div>
+                <div class="form-group"><label>Interest Rate (%)</label><input name="interest_rate_percent" type="number" step="0.1" value="8" required /></div>
+                <button type="submit" class="btn-primary">Run Forecast</button>
+              </form>
+            </div>
+
+            <div class="glass-card forecast-chart-card">
+              <div class="chart-header">
+                <div>
+                  <span class="chart-label">Projected Net Income:</span>
+                  <span class="chart-value" id="net-income">—</span>
+                </div>
+                <div>
+                  <span class="chart-label">Monthly Payment:</span>
+                  <span class="chart-value" id="monthly-payment">—</span>
+                </div>
+              </div>
+              <div class="chart-legend">
+                <span class="legend-item"><span class="legend-swatch revenue"></span> Revenue</span>
+                <span class="legend-item"><span class="legend-swatch expense"></span> Expenses + Debt</span>
+              </div>
+              <div id="forecast-bars" class="bars"></div>
+            </div>
+
+            <div class="glass-card forecast-insights-card">
+              <h3>Advisor Insights</h3>
+              <div class="insight good">
+                <strong>Health Summary</strong>
+                <p id="insight-health">Operating margins remain stable under current parameters.</p>
+              </div>
+              <div class="insight warn">
+                <strong>Cash Flow Risks</strong>
+                <p id="insight-risk">Monitor liquidity during heavier repayment months.</p>
+              </div>
+              <div class="insight action">
+                <strong>Strategic Advice</strong>
+                <p id="insight-action">Adjust repayment tenor if DSCR falls below thresholds.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══ VIEW: BENCHMARKS ═══ -->
+        <section id="benchmarks" class="view">
+          <div class="section-header">
+            <div>
+              <p class="section-sub">Compare major BNPL providers in the Malaysian market</p>
+            </div>
+          </div>
+
+          <div class="glass-card table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>Provider</th>
+                  <th>Monthly Rate</th>
+                  <th>EAPR</th>
+                  <th>Late Fee</th>
+                  <th>Typical Limit</th>
+                  <th>Strategic Fit</th>
+                </tr>
+              </thead>
+              <tbody id="benchmark-rows"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>
