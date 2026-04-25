@@ -79,7 +79,14 @@ app.include_router(sme_router, prefix=settings.API_PREFIX)
 app.include_router(advisor_router, prefix=settings.API_PREFIX)
 app.include_router(dashboard_router, prefix=settings.API_PREFIX)
 
-frontend_dir = Path(__file__).resolve().parent.parent.parent / "frontend"
+import os
+
+# Check if it's flattened on GitHub (2 folders up)
+frontend_dir = Path(__file__).resolve().parent.parent / "frontend"
+
+# If not there, fall back to the original local path (3 folders up)
+if not frontend_dir.exists():
+    frontend_dir = Path(__file__).resolve().parent.parent.parent / "frontend"
 
 # API info endpoint (available at /api/v1/info for debugging)
 @app.get("/api/info", tags=["root"])
